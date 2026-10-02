@@ -1,0 +1,18 @@
+digraph F {
+  rankdir=LR; fontname="Helvetica"; bgcolor="white"; nodesep=0.3; ranksep=0.5;
+  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#2E7D55", fillcolor="#F2F5F3"];
+  edge [color="#14211C", arrowsize=0.7, fontname="Helvetica", fontsize=9];
+  labelloc=t; label="Data flow: from user input to daily plan"; fontsize=15;
+  u [label="User input\n(5 wizard steps)", fillcolor="#E4ECE7"];
+  v [label="Zod validation\n(per step)", fillcolor="#FDF3E3", color="#D9922B"];
+  s [label="Zustand draft\n+ AsyncStorage", fillcolor="#E8EDF7", color="#3F5FA8"];
+  p [label="UserProfile\n(complete)", fillcolor="#FFFFFF"];
+  b [label="BMR\nMifflin-St Jeor", fillcolor="#F7E6EB", color="#B5395B"];
+  t [label="TDEE\nBMR x activity", fillcolor="#F7E6EB", color="#B5395B"];
+  c [label="Target kcal\n+/- goal, safety caps", fillcolor="#F7E6EB", color="#B5395B"];
+  m [label="Macros\nprotein-first split", fillcolor="#F7E6EB", color="#B5395B"];
+  g [label="Water + guardrails\nsodium, sugar, fiber", fillcolor="#F7E6EB", color="#B5395B"];
+  ml [label="Meal plan\nfasting-aware times\ndiet + allergy filter", fillcolor="#F7E6EB", color="#B5395B"];
+  d [label="Dashboard\nring, bars, rules, meals", fillcolor="#E4ECE7"];
+  u -> v -> s -> p -> b -> t -> c -> m; c -> g; m -> ml; g -> d; ml -> d; m -> d;
+}

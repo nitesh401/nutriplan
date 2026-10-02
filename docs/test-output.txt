@@ -1,0 +1,29 @@
+NutriPlan nutrition engine: test suite
+
+-- Formulas --
+PASS  TC01 BMR male 80kg/180cm/30y  (got 1780, expected 1780)
+PASS  TC02 BMR female 60kg/165cm/28y  (got 1330.25, expected 1330.25 ±0.01)
+PASS  TC03 TDEE moderate (x1.55)  (got 2759, expected 2759 ±0.01)
+PASS  TC04 BMI 80kg/180cm  (got 24.7, expected 24.7)
+PASS  TC05 Body-fat estimate male 30y BMI 24.7  (got 20.3, expected 20.3 ±0.1)
+PASS  TC06 Water 80kg very active (ml)  (got 3300, expected 3300)
+PASS  TC07 Water clamped at 4.5 L (150kg extra)  (got 4500, expected 4500)
+
+-- Calorie targets --
+PASS  TC08 Lose 0.5 kg/wk target kcal  (got 2209, expected 2209 ±1)
+PASS  TC09 Weeks to lose 5 kg  (got 10, expected 10)
+PASS  TC10 Gain 0.5 kg/wk target kcal  (got 2852, expected 2852 ±1)
+PASS  TC11 Female safe floor 1200 kcal applied  (got 1200, expected 1200)
+PASS  TC12 Floor adds a user-facing note  (got note, expected note)
+PASS  TC13 Target above weight while losing: no timeline  (got null, expected null)
+
+-- Macros and guardrails --
+PASS  TC14 Macro percents sum to 100  (got 100, expected 100)
+PASS  TC15 Macro kcal match target (gram rounding)  (got 2212, expected 2209 ±10)
+PASS  TC16 Protein honours 1.2 g/kg floor (>= 96 g)  (got ok, expected ok)
+PASS  TC17 CKD caps protein at 0.8 g/kg (64 g)  (got 64, expected 64)
+PASS  TC18 Hypertension sodium limit (mg)  (got 1500, expected 1500)
+PASS  TC19 Diabetes forces zero added sugar (g)  (got 0, expected 0)
+PASS  TC20 Keto carbs capped at <= 50 g  (got ok, expected ok)
+
+20 passed, 0 failed
